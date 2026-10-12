@@ -1,0 +1,5 @@
+# Copy to android/key.properties and fill with the distributor's release key.
+storeFile=../keys/carepill-upload.jks
+storePassword=CHANGE_ME
+keyAlias=carepill
+keyPassword=CHANGE_ME

@@ -1,0 +1,5 @@
+"NSCameraUsageDescription" = "扫描药品条码，或拍摄药盒和说明书，帮您添加药品。";
+"NSPhotoLibraryUsageDescription" = "从相册选药盒照片，帮您把药录进来。";
+"NSMicrophoneUsageDescription" = "按住说话问‘今天吃药了吗’，需要用到麦克风。";
+"NSSpeechRecognitionUsageDescription" = "按住录音，松开后将识别的文字发送给助手。";
+NSLocalNetworkUsageDescription = "连接您在局域网中配置的本地 AI 服务。";

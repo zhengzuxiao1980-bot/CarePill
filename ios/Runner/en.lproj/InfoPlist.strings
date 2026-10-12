@@ -1,0 +1,5 @@
+"NSCameraUsageDescription" = "Scan medicine barcodes or photograph boxes and leaflets to add medicines.";
+"NSPhotoLibraryUsageDescription" = "Choose medicine photos to help add your medicines.";
+"NSMicrophoneUsageDescription" = "Use the microphone to ask questions about your medication.";
+"NSSpeechRecognitionUsageDescription" = "Hold to record. Release to send the recognized text to your assistant.";
+NSLocalNetworkUsageDescription = "Connect to the local AI service you configured on your network.";

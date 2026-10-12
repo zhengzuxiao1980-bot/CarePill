@@ -1,0 +1,28 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          explicit_to_json: true
+      freezed:
+        options:
+          # 当字段为可空时，copyWith 传 null 视为"显式清空"需谨慎；
+          # 保持 freezed 默认行为即可。
+          copy_with: true
+      slang_build_runner:
+        enabled: false
+        # The CLI reads this key; share its options with the legacy builder.
+        options: &slang_options
+          base_locale: zh
+          input_directory: lib/i18n
+          output_directory: lib/i18n
+          output_file_name: strings.g.dart
+          translate_var: tr
+          flutter_integration: false
+          locale_handling: true
+          lazy: false
+          timestamp: false
+          flat_map: false
+      slang_build_runner:legacy:
+        enabled: true
+        options: *slang_options

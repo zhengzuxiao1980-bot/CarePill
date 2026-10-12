@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  analyze-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: 依赖
+        run: flutter pub get
+      - name: 静态分析
+        run: flutter analyze --fatal-infos
+      - name: 分层依赖检查（docs/04 §7）
+        run: dart run tools/check_layering.dart
+      - name: 单元与 Widget 测试
+        run: flutter test
+      - name: Android Manifest 必需 Receiver
+        shell: bash
+        run: |
+          grep -q 'com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver' android/app/src/main/AndroidManifest.xml
+          grep -q 'com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver' android/app/src/main/AndroidManifest.xml
+          grep -q 'android.intent.action.BOOT_COMPLETED' android/app/src/main/AndroidManifest.xml
+      - name: Android Debug APK
+        run: flutter build apk --debug
+      - name: Android Release APK
+        run: flutter build apk --release
+      - name: Release network and speech configuration
+        run: dart run tools/check_agent_manifest.dart
+      - name: Release notification icon and sound resources
+        run: dart run tools/check_release_resources.dart

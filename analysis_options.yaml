@@ -1,0 +1,32 @@
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+linter:
+  rules:
+    # docs/04 §7：严格项，防止架构腐化
+    avoid_dynamic_calls: true
+    unawaited_futures: true
+    always_declare_return_types: true
+    cancel_subscriptions: true
+    directives_ordering: true
+    prefer_single_quotes: true
+    unnecessary_lambdas: true
+    # DI 场景下"命名参数 → 私有字段"是惯例（Riverpod 服务注入），关闭此条
+    prefer_initializing_formals: false
